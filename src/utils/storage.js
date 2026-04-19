@@ -4,8 +4,8 @@ const STORAGE_KEY = "notes-app-data";
 
 export function saveNotesToLocalStorage(notes){ 
     try {
-        const encrytedNotes = encryptData(notes); //not dizisi alır, şifreler
-        localStorage.setItem(STORAGE_KEY, encrytedNotes); //localstorage'a kaydeder
+        const encrytedNotes = encryptData(notes); 
+        localStorage.setItem(STORAGE_KEY, encrytedNotes); 
         } catch (error){
             console.error( "Save to localStorage error: ", error)
         }
@@ -13,11 +13,11 @@ export function saveNotesToLocalStorage(notes){
 
 export function loadNotesFromLocalStorage (){
     try{
-        const encrytedNotes = localStorage.getItem(STORAGE_KEY); //localstorage'dan şifreyi alır
+        const encrytedNotes = localStorage.getItem(STORAGE_KEY); 
         if (!encrytedNotes) {
             return [];
         }
-        const decryptedNotes = decryptData(encrytedNotes); //şifreyi çözer
+        const decryptedNotes = decryptData(encrytedNotes); 
         if (!decryptedNotes){
             return [];
         }
