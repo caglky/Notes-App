@@ -3,13 +3,10 @@ import { decryptData } from "../utils/crypto";
 import { deleteNote, toggleComplete } from "../store/notesStore";
 
 export default function NoteDetailPage(){
-    const location = useLocation(); //bulundığun sayfanın URL bilgisini verir
+    const location = useLocation();
     const navigate = useNavigate();
     const params = new URLSearchParams(location.search); 
-    //location.URL = URL'in soru işaretinden sornaki kısmını verir
-    //URLSearchParams = location.URL sonrası metni okunabilir hale getiri
-    const data = params.get("data"); //okunabilir halden sadece data değerini alır
-    // data değişkeni içinde şifreli veri var 
+    const data = params.get("data"); 
     if (!data) {
         return (
         <div className="container">
@@ -19,9 +16,9 @@ export default function NoteDetailPage(){
             </div>
         </div>
     );
-    } //data yoksa diye kontrol 
+    }
 
-    const decoded = decodeURIComponent(data); //encode veri normal decode hale gelir 
+    const decoded = decodeURIComponent(data); 
     const note = decryptData(decoded);
 
     if(!note){
