@@ -8,6 +8,3 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
-
-//AppInıtializer görünmeyen yardımcı component => localStorage'dan veriyi yükler, notes değişince kaydeder
-//RouterProvider ise sayfalar ekrana basan ana yapı => /, /new, /detail sayfalarını çalıştırır
