@@ -1,11 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useStore } from "@tanstack/react-store";
-import { notesStore, deleteNote, toggleComplete } from "../store/notesStore";
+import { useNotesStore } from "../hooks/useNotesStore";
 import { encryptData } from "../utils/crypto";
 
 
 export default function NotesListPage() {
-    const notes = useStore(notesStore, (state)=>state.notes);
+    const { notes, sorted, deleteNote, toggleComplete } = useNotesStore();
     const navigate = useNavigate();
 
     function handleNoteClick(note){
@@ -30,7 +29,7 @@ export default function NotesListPage() {
                 <p>No notes yet.</p>
             ):(
                 <div className="notes-grid">
-                    {notes.map((note)=> (
+                    {sorted.sort((a, b) => Number(a.completed) - Number(b.completed)).map((note)=> (
                         <div className={`note-card ${note.completed ? "completed-card": ""}`}
                             key = {note.id} 
                             onClick={()=> handleNoteClick(note)}>

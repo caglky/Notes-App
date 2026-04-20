@@ -1,10 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { decryptData } from "../utils/crypto";
-import { deleteNote, toggleComplete } from "../store/notesStore";
+import { useNotesStore } from "../hooks/useNotesStore";
 
 export default function NoteDetailPage(){
     const location = useLocation();
     const navigate = useNavigate();
+    const { deleteNote, toggleComplete } = useNotesStore();
     const params = new URLSearchParams(location.search); 
     const data = params.get("data"); 
     if (!data) {

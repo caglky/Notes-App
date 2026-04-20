@@ -1,37 +1,37 @@
 import { createStore } from "@tanstack/react-store";
 
-export const notesStore = createStore({
+const notesStore = createStore({
     notes: [],
 });
 
-export function setNotes(notes){
+function setNotes(notes){
     notesStore.setState(()=> ({
         notes,
     }));
 }
 
-export function addNote(note){
+function addNote(note){
     notesStore.setState((state) => ({
         ...state,
         notes: [...state.notes, note],
     }));
 }
 
-export function deleteNote(noteId){
+function deleteNote(noteId){
     notesStore.setState((state)=> ({
         ...state,
         notes: state.notes.filter((note)=>note.id !== noteId),
     }));
 }
 
-export function updateNote(updateNote){
+function updateNote(updateNote){
     notesStore.setState((state)=> ({
         ...state, 
         notes: state.notes.map((note)=> note.id === updateNote.id ? updateNote : note),
     }));
 }
 
-export function toggleComplete(noteId){
+function toggleComplete(noteId){
     notesStore.setState((state) => ({
         ...state,
         notes: state.notes.map ((note) => note.id === noteId ? {
@@ -40,3 +40,12 @@ export function toggleComplete(noteId){
         }: note),
     }));
 }
+
+export const notesStoreApi = {
+    notesStore,
+    setNotes,
+    addNote,
+    deleteNote,
+    updateNote,
+    toggleComplete,
+};

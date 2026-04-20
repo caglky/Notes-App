@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { addNote } from "../store/notesStore";
+import { useNotesStore } from "../hooks/useNotesStore";
 
 export default function NewNotePage(){
     const navigate = useNavigate();
+    const { addNote } = useNotesStore();
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -17,9 +18,9 @@ export default function NewNotePage(){
         e.preventDefault();
         const now = new Date().toISOString();
         
-        const finalCategory = category == "other" ? customCategory.trim() : category;
+        const finalCategory = category === "other" ? customCategory.trim() : category;
         const newNote = {
-            id: crypto.randomUUID,
+            id: uuidv4(),
             title,
             content,
             category : finalCategory, 

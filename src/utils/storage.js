@@ -18,6 +18,7 @@ export function loadNotesFromLocalStorage (){
             return [];
         }
         const decryptedNotes = decryptData(encrytedNotes); 
+        console.log("Decryption: ", decryptedNotes);
         if (!decryptedNotes){
             return [];
         }

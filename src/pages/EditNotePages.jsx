@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useStore } from "@tanstack/react-store";
-import { notesStore, updateNote } from "../store/notesStore";
+import { useNotesStore } from "../hooks/useNotesStore";
 
 export default function EditNotePage(){
     const { id } = useParams();
-    const notes = useStore(notesStore, (state)=> state.notes);
+    const { notes, updateNote } = useNotesStore();
     const navigate = useNavigate();
 
     const existingNote = notes.find((note)=>note.id === id);
