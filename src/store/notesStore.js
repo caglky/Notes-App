@@ -40,5 +40,3 @@ export function toggleComplete(noteId){
         }: note),
     }));
 }
-
-//functionlar 
