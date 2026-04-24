@@ -21,7 +21,7 @@ export default function NoteDetailPage(){
     );
     } //data yoksa diye kontrol 
 
-    const decoded = decodeURIComponent(data); //encode veri normal decode hale gelir 
+    const decoded = decodeURIComponent(data); 
     const note = decryptData(decoded);
 
     if(!note){
@@ -75,8 +75,8 @@ export default function NoteDetailPage(){
                     </div>
                     <div className="meta-item">
                         <span className="meta-label">Status: </span>
-                        <span className= {`status-badge $ {note.completed ? "completed" : "pending"}`}>
-                            {note.completed ? "Completed": "Pending"}
+                        <span className= {`status-badge ${note.isCompleted ? "completed" : "pending"}`}>
+                            {note.isCompleted ? "Completed": "Pending"}
                         </span>
                     </div>
                 </div>
@@ -86,10 +86,10 @@ export default function NoteDetailPage(){
                 </div>
 
                 <div className="detail-actions">
-                    <Link to = {`/edit/${note.id}`} className="action-btn edit-btn">Edit</Link>
+                    <Link to={`/edit/${note.id}`} className="action-btn edit-btn" >Edit</Link>
                 </div>
                 <button className="action-btn done-btn" onClick={handleToggleComplete}>
-                    {note.completed? "Mark as Pending" : "Mark as Completed"}
+                    {note.isCompleted? "Mark as Pending" : "Mark as Completed"}
                 </button>
                 <button className="action-btn delete-btn" onClick={handleDelete}>Delete</button>
                 <Link to = "/" className="action-btn back-btn">Back to Notes</Link>

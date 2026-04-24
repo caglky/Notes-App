@@ -2,10 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useStore } from "@tanstack/react-store";
 import { notesStore, deleteNote, toggleComplete } from "../store/notesStore";
 import { encryptData } from "../utils/crypto";
-
+import classNames from "classnames";
 
 export default function NotesListPage() {
     const notes = useStore(notesStore, (state)=>state.notes);
+    const sortedNotes = [...notes].sort((a,b) => {
+        return a.isCompleted - b.isCompleted;
+    });
     const navigate = useNavigate();
 
     function handleNoteClick(note){
@@ -30,12 +33,13 @@ export default function NotesListPage() {
                 <p>No notes yet.</p>
             ):(
                 <div className="notes-grid">
-                    {notes.map((note)=> (
-                        <div className={`note-card ${note.completed ? "completed-card": ""}`}
+                    {sortedNotes.map((note)=> (
+                        <div className={`note-card`}
                             key = {note.id} 
                             onClick={()=> handleNoteClick(note)}>
                             <div>
-                            <div className="note-title">{note.title}</div>
+                            <div className={classNames("note-title", {
+                                completed: note.isCompleted})}>{note.title}</div>
                             <div className="note-category" >{note.category}</div>
                             </div>
                             <div className="note-actions">
@@ -43,7 +47,7 @@ export default function NotesListPage() {
                                 className="small-btn done-btn"
                                 onClick={(e)=> handleToggleComplete(e,note.id)}
                                 >
-                                    {note.completed ? "Undo" : "Done"}
+                                    {note.isCompleted ? "Undo" : "Done"}
                                 </button>
                                 <button
                                 className="small-btn delete-btn"

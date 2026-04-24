@@ -30,3 +30,5 @@
    - router'ın haritası, hangi adrrese gidilince ne açılacağını söylüyoruz 
 
 6) content yerine items kullandım, steps bir dizi, her step kendi içinde text ve done bilgisi tutucak 
+
+7) AES=> Advanced Encryption Standart => en çok kullanılan şifreleme algoritmalarından biri, veriyi al şifrele,  sadece doğru anahtarla aç 

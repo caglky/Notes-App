@@ -36,7 +36,9 @@ export function toggleComplete(noteId){
         ...state,
         notes: state.notes.map ((note) => note.id === noteId ? {
             ...note,
-            completed: !note.completed,
+            isCompleted: !note.isCompleted,
         }: note),
     }));
 }
+
+//functionlar 

@@ -63,6 +63,18 @@ body {
   font-family: inherit;
 }
 
+/*
+.note-form input:invalid,
+.note-form textarea:invalid,
+.note-form select:invalid {
+  border-color : red
+}
+.note-form input:invalid:focus,
+.note-form textarea:invalid:focus,
+.note-form select:invalid:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15);
+}*/
+
 .save-btn{
   margin-top: 8px;
   width: 100%;
@@ -132,6 +144,10 @@ body {
   font-weight: 600;
   margin-bottom: 5px;
   text-transform: capitalize;
+}
+
+.note-title.completed{
+  text-decoration: line-through;
 }
 
 .note-category {
@@ -273,12 +289,10 @@ textarea{
 }
 
 .status-badge.completed {
-  background: #dcfce7;
-  color: #166534;
+  color: #15533e;
 }
 .status-badge.pending {
-  background: #fef3c7;
-  color: #92400e;
+  color: #57514e;
 }
 .detail-content-box {
   background:#dce0e4 ;

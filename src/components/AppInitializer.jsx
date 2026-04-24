@@ -20,3 +20,5 @@ export default function AppInitializer(){
     return null;
 }
 
+
+// bunu router dışında eklenmek yerine ne yapılabilir 
